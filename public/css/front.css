@@ -1,0 +1,26 @@
+
+.info-product-price #cart a{
+  font-size: 30px;
+
+}
+
+#paymentPanel #network{
+	widows: 100px;
+	height: 40px;
+	float: left;
+}
+
+#payment label{
+	color: #777;
+	font-weight: normal;
+}
+
+#payment .form-group{
+	padding-bottom: 20px;
+}
+
+.success{
+	color: #fff;
+	background-color: #A9DFBF;
+}
+

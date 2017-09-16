@@ -1,0 +1,35 @@
+#input-product .category{
+	width: 80%;
+	padding: 8px;
+}
+
+#input-product .category:focus{
+	outline: none;
+}
+
+#input-product .imageUpdate{
+	display: none;
+}
+
+#input-product .imageLable{
+	background-color: #5499C7;
+	color: #fff;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#otherImage img{
+	max-height: 50px;
+	min-height: 50px;
+	max-width: 100%;
+	min-width: 100%;
+}
+.success{
+	color: #fff;
+	background-color: #A9DFBF;
+}
+
+.error{
+	background-color: #EC7063;
+	color: #fff;
+}

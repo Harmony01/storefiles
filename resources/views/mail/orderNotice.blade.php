@@ -1,0 +1,1 @@
+<p>Your order has been sent successfully. order will be processed soon</p>
