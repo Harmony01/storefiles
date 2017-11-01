@@ -76,9 +76,12 @@ Order and Payment
                     <span class="label label-danger">Pending</span> 
                   @endif<br>
 
-                  Total Amount: GHS {{$od->total_price}}<br>
+                  Sub Total: GHS {{number_format($od->total_price,2)}}<br>
+                  Delivery Cost: GHS {{number_format($od->Dprice,2)}}<br>
+                  Grand Total: GHS <?php echo number_format(($od->total_price + $od->Dprice),2); ?><br>
+
                   Amount Paid: GHS {{ number_format($od->amount,2)}}<br>
-                  Outstanding: GHS <?php $net = ($od->total_price) - ($od->amount);
+                  Outstanding: GHS <?php $net = ($od->total_price + $od->Dprice) - ($od->amount);
                     echo number_format($net,2);
                     ?>
               </th>

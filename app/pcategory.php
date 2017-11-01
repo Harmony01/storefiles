@@ -9,4 +9,9 @@ class pcategory extends Model
     public function category(){
     	return $this->hasMany('App\category');
     }
+
+    public function thumbnail()
+    {
+    	return $this->belongsTo(thumbnail::class);
+    }
 }

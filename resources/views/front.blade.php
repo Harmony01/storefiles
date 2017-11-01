@@ -1,6 +1,7 @@
 @extends('layouts.mainfront')
 @section('styles')
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="{{ asset('css/thumbnail.css') }}">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/font-awesome.css" rel="stylesheet"> 
 <link href="css/easy-responsive-tabs.css" rel='stylesheet' type='text/css'/>
@@ -13,21 +14,32 @@ Welcome to the Largest online Mall
 	    <div class="container">
             <div class="banner_bottom_agile_info_inner_w3ls">
     	           <div class="col-md-6 wthree_banner_bottom_grid_three_left1 grid">
-						<figure class="effect-roxy">
+						<figure>
 							<img src="images/bottom1.jpg" alt=" " class="img-responsive" />
-							<figcaption>
-								<h3><span>F</span>all Ahead</h3>
-								<p>New Arrivals</p>
-							</figcaption>			
+							<div class="caption">
+								<div class="capItem">
+									<h2 style="color: #fff;">ShoppyMarket <span><a href="" class="btn btn-flat btn-warning">Send Us</a></span></h2><br>
+									<span class="det">Buy at your convinence free delivery within Accra. Common Go shopping</span>
+								</div>
+							</div>
+							<div class="capItem2">
+									<h2 style="color: #fff;">Shopping <span><a href="" class="btn btn-flat btn-warning">Go shopping</a></span></h2><br>
+								</div>			
 						</figure>
 					</div>
 					 <div class="col-md-6 wthree_banner_bottom_grid_three_left1 grid">
-						<figure class="effect-roxy">
+						<figure>
 							<img src="images/bottom2.jpg" alt=" " class="img-responsive" />
-							<figcaption>
-								<h3><span>F</span>all Ahead</h3>
-								<p>New Arrivals</p>
-							</figcaption>			
+							<div class="caption">
+								<div class="capItem">
+									<h2 style="color: #fff;">Shopping <span><a href="" class="btn btn-flat btn-warning">Go shopping</a></span></h2><br>
+									
+							      <span class="det">Buy at your convinence free delivery within Accra. Common Go shopping</span>
+								</div>
+							</div>
+							<div class="capItem2">
+									<h2 style="color: #fff;">Shopping <span><a href="" class="btn btn-flat btn-warning">Go shopping</a></span></h2><br>
+								</div>			
 						</figure>
 					</div>
 					<div class="clearfix"></div>

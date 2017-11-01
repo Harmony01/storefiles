@@ -32,9 +32,7 @@
                   <thead>
                   <tr>
                     <th>Order ID</th>
-                    <th>Name User</th>
-                    <th>Location</th>
-                    <th>Telephone</th>
+                    <th>Customer's Details</th>
                     <th>Status</th>
                     <th>Payment Summary</th>
                     <th>Action</th>
@@ -43,9 +41,13 @@
                   <tbody>
                   <tr>
                     <td><a href="">{{$d->orderId}}</a></td>
-                    <td>{{$d->user->name}}</td>
-                    <td>{{$d->location}}</td>
-                    <td>{{$d->tel}}</td>
+                    <td>
+                     Name: {{$d->user->name}}<br>
+                     Address: {{$d->location}}<br>
+                     Telephone: {{$d->tel}}<br>
+                     Region: {{$d->region->name}}<br>
+                     District/Municipal: {{ $d->district->name }}
+                    </td>
                     <td> @if($d->status=='0')
                   <span class="label label-warning">new</span>
                   @elseif($d->status=='1')
@@ -60,11 +62,14 @@
                     <td style="text-align: right; font-weight: bold;">
                     Payment Type: {{$d->paymentType}}<br>
                     Transaction Id: {{$d->tId}}<br>
-                   Total Amount: GHS {{number_format($d->total_price,2)}}<br>
+                   Sub Total: GHS {{number_format($d->total_price,2)}}<br>
+                   Delivery Cost: GHS {{number_format($d->Dprice,2)}}<br>
+                   Grand Total: GHS <?php $total = $d->total_price + $d->Dprice; echo number_format($total,2); ?> 
+                     <br>                  
                     Amount Paid: GHS {{ number_format($d->amount,2)}}<br>
                       Outstanding: GHS
                         <?php 
-                         $bal =$d->total_price -$d->amount;
+                         $bal = ($d->total_price + $d->Dprice) - $d->amount;
                            if ($bal >0) {
                              echo "<span id='bal' style='color: red;'>".number_format($bal,2)."</span>";
                            }
@@ -147,8 +152,9 @@
    }
  $('#delivered').click(function(e){
       var total = <?php echo $d->total_price; ?>;
+      var Dprice = <?php echo $d->Dprice; ?>;
       var amount = <?php echo $d->amount; ?>;
-      var bal = total-amount;
+      var bal = total+Dprice -amount;
       if (bal > 0) {
         e.preventDefault();
        alert('Delivery cannot be confirmed! Customer is owing, Delievery will only be confirmed when customer makes full payment. Enter Payment if customer has made full payment');

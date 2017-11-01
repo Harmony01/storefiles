@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\order;
 use App\region;
 use App\disctrict;
+use App\ districtPrice;
 use Session;
 
 
@@ -82,15 +83,43 @@ class adminOrderController extends Controller
 
    public function location(){
     $reg = Region::orderby('name','asc')->get();
-    return view('admin.loc', compact('reg'));
+    $dis = Disctrict::select('*')->orderby('name','asc')->get();
+    return view('admin.loc', compact('reg', 'dis'));
+
+   }
+   public function fetchdis($id){
+         
+          $dis = Disctrict::select('*')->where('region_id', $id)->orderby('name','asc')->get();
+          $reg = Region::orderby('name','asc')->get();
+          return view('admin.loc', compact('reg', 'dis'));
 
    }
 
     public function add(Request $request){
-    Disctrict::create($request->all());
+    if (!empty($request->region_id)) {
+      foreach ($request->name as $key => $names) {
+        $data = array('region_id'=>$request->region_id, 'name'=>$names);
+
+        Disctrict::insert($data);
+      }
+    }
     Session::flash('flash_message', 'District added successfully!');
     return redirect()->back();
       
 
    }
+
+   public function addP(Request $request){
+      foreach ($request->Dprice as $key => $d) {
+        $data = array('disctrict_id' => $request->disctrict_id[$key], 'Dprice' => $d);
+       DistrictPrice::insert($data) ;
+       }
+
+    Session::flash('flash_message', 'Price added successfully!');
+    return redirect('/locations');
+      
+
+   }
+
+
 }

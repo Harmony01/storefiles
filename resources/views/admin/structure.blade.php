@@ -22,28 +22,33 @@
 	<div class="panel panel-default">
 		
 		  <div class="panel-heading" style="background-color: #fff;">
-		  	Add District
+		  	Add New Thumbnail
 		  </div>
 		  <div class="panel-body">
-        <div class="form-group">
-		  			      <select id="reg" class="form-control" name="region_id">
-		  				  <option>----select Region---</option>
-		  				  @foreach($reg as $rg)
-		  				  <option value="{{$rg->id}}">{{$rg->name}}</option>
-		  				  @endforeach
-		  			     </select>
-		  		        </div>
-		  <table class="table">
+                <div class="form-group">
+                    <label>Thumbnail's Name</label>
+		  			<input type="text" name="name" class="form-control">     
+		  		 </div>
+		  		 <div class="form-group">
+                    <label>Description</label>
+		  			<textarea name="description" class="form-control"></textarea>
+		  		 </div>
+		        <table class="table">
 		  	<tr>
-		  		<th>Districts</th>
+		  		<th>Asigne Menu</th>
 		  		<th></th>
 		  	</tr>
 		  	<tbody id="tbody1">
 		  		<tr>	
 		  		     <td>
-		  		     	<div class="form-group">
-		  			      <input type="text" id="name" name="name[]" class="form-control">
-		  		        </div>
+		  		     	<select id="dis" class="form-control" name="disctrict_id[]">
+		  				<option>----select District---</option>
+		  				@forelse($cat as $d)
+		  				<option value="{{$d->id}}">{{$d->name}}</option>
+		  				@empty
+		  				<option value="0">No data</option>
+		  				@endforelse
+		  			  </select>
 		  		     </td>
 		  		     <td>
 		  		     	<a href="#" class="add btn btn-flat btn-primary" title="Add another role"><i class="fa fa-plus"></i></a>
@@ -59,13 +64,67 @@
 		 		</div>
 		 	</div>
 		</div>
-  </form>		
+  </form>
+    <form>
+    	<div class="panel panel-default">
+    	   <div class="panel-heading" style="background-color: #fff;">
+    	   	 Add Menu
+    	   </div>
+    	   <div class="panel-body">
+    	   	 <div class="form-group">
+    	   	    <label>Menu's Name</label>
+    	   	 	<input type="text" name="name" class="form-control">
+    	   	 </div>
+    	   	 <div class="form-group">
+    	   	 	<select id="dis" class="form-control" name="disctrict_id[]">
+		  				<option>----select District---</option>
+		  				@forelse($th as $d)
+		  				<option value="{{$d->id}}">{{$d->name}}</option>
+		  				@empty
+		  				<option value="0">No data</option>
+		  				@endforelse
+		  			  </select>
+    	   	 </div>
+    	   </div>
+    	   <div class="panel-footer">
+    	   	 <div class="form-group clearfix">
+    	   	 	<button type="submit" class="btn btn-flat btn-primary pull-right">Add menu</button>
+    	   	 </div>
+    	   </div>	
+    	</div>
+    </form>		
 	</div>
 	<div class="col-md-6">
+	 <div class="panel panel-default">
+	 	<div class="panel-heading" style="background-color: #fff;">
+	 		Thumbnails
+	 	</div>
+	 		<div class="panel-body">
+	 			<table class="table">
+	 				<tr>
+	 					<th>Name</th>
+	 					<th>Name</th>
+	 					<th>Action</th>
+	 				</tr>
+	 				 @forelse($th as $t)
+	 				  <tr>
+	 				  <td>{{ $t->name}}</td>
+	 				  <td><a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+	 				  <a href="" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+	 				  </td>
+	 				 </tr>
+	 				@empty
+	 				<tr>
+	 					<td>No data found</td>
+	 				</tr>
+	 				@endforelse	
+	 			</table>
+	 		</div>
+	 </div>
 		<div class="panel panel-default">
 		
 		  <div class="panel-heading" style="background-color: #fff;">
-		  	Add district Price
+		   Menus
 		  </div>
 		  <div class="panel-body">
 		  <span>Sort By:</span>
@@ -73,7 +132,7 @@
 		{{ csrf_field() }} 
 		  <select id="reg1" class="form-control" name="wr">
 		  				  <option>----select Region---</option>
-		  				  @foreach($reg as $rg)
+		  				  @foreach($th as $rg)
 		  				  <option value="{{$rg->id}}">{{$rg->name}}</option>
 		  				  @endforeach
 		  </select>
@@ -93,7 +152,7 @@
 		  				<div class="form-group">
 		  			      <select id="dis" class="form-control" name="disctrict_id[]">
 		  				<option>----select District---</option>
-		  				@forelse($dis as $d)
+		  				@forelse($cat as $d)
 		  				<option value="{{$d->id}}">{{$d->name}}</option>
 		  				@empty
 		  				<option value="0">No data</option>
@@ -136,7 +195,14 @@
     });
     function addRow(){
      var addNewRow = '<tr>'+
-		  		      '<td> <input type="text" id="name" name="name[]" class="form-control"> </td>'+	
+		  		      '<td> <select class="form-control" name="disctrict_id[]"><option>----select Menu---</option>'+
+		  		      '@forelse($cat as $d)'+
+		  		      '<option value="{{$d->id}}">{{$d->name}}</option>'+
+		  		      '@empty'+
+		  		      '<option value="0">No data</option>'+
+		  		      '@endforelse'+
+		  		      '</select>'+
+		  		      '</td>'+		
 		  		     '<td>'+
 		  		     '<a href="#" class="sub btn btn-flat btn-danger" title="remove"><i class="fa fa-minus"></i></a>'+
 		  		     '</td>'+
@@ -160,7 +226,7 @@ $('body').delegate('.sub', 'click', function(){
     function addRow1(){
      var addNewRow = '<tr>'+
 		  		      '<td> <select class="form-control" name="disctrict_id[]"><option>----select District---</option>'+
-		  		      '@forelse($dis as $d)'+
+		  		      '@forelse($cat as $d)'+
 		  		      '<option value="{{$d->id}}">{{$d->name}}</option>'+
 		  		      '@empty'+
 		  		      '<option value="0">No data</option>'+

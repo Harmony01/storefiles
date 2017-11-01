@@ -24,13 +24,6 @@ class orderLogin extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/order/create';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -39,6 +32,19 @@ class orderLogin extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+
+     protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return redirect('/order/create');
+    }
+
+
+    
 
     
 }

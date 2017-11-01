@@ -1,0 +1,69 @@
+/*this is the css for the thumbnail */
+figure{
+	position: relative;
+}
+
+figure .caption{
+	position: absolute;
+	width: 100%;
+	left:0;
+	background-color: rgba(35, 214, 178, 0.72);
+	top 0;
+	height: 100%;
+	bottom: 0;
+	opacity: 1;
+	transform: scale(0,0);
+	transition: all .1s ease-in-out;
+}
+figure .capItem2{
+position: absolute;
+	width: 100%;
+	bottom: -10px;
+	left:0;
+	background-color: rgba(35, 214, 178, 0.72);
+	cursor: pointer;
+	transition: all .2s ease-in-out;
+}
+figure .caption .capItem{
+opacity: 0;	
+padding: 10px;
+transform: translateY(50px);
+transition: all .3s .1s ease-in-out;
+}
+figure .caption .capItem .det{
+	color: #fff;
+	opacity: 0;
+	transition: .4s .2s ease-in-out;
+}
+
+
+
+figure:hover .caption{
+	visibility: visible;
+	transform: scale(1,1);
+}
+
+figure:hover .capItem2{
+	opacity: 0;
+}
+figure .caption .capItem h2 .btn{
+	background-color: transparent;
+	transition: .3s ease-in-out;
+}
+figure .capItem2 h2 .btn{
+	background-color: transparent;
+	transition: .3s ease-in-out;
+}
+
+figure .caption .capItem h2 .btn:hover{
+	background-color: #DC7633;
+}
+figure .capItem2 h2 .btn:hover{
+	background-color: #DC7633;
+}
+figure:hover .capItem{
+	opacity: 1;
+}
+figure:hover .caption .capItem .det{
+	opacity: 1;
+}

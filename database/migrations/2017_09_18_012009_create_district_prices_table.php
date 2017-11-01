@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePcategoriesTable extends Migration
+class CreateDistrictPricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePcategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pcategories', function (Blueprint $table) {
+        Schema::create('district_prices', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('thumbnail_id')->unsigned()->nullable();
+            $table->string('Dprice');
+            $table->integer('disctrict_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePcategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pcategories');
+        Schema::dropIfExists('district_prices');
     }
 }

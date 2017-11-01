@@ -33,3 +33,33 @@
 	background-color: #EC7063;
 	color: #fff;
 }
+.dis{
+	display: block;
+}
+#result{
+	background-color: #EC7063;
+	color: #fff;
+	padding: 5px 3px;
+	margin-bottom: 5px;
+	font-style: italic;
+	font-size: 12px;
+	display: none;
+	text-align: center;
+	transition: .3s ease-in-out
+}
+
+.info-product-price #cart2{
+	position: absolute;
+	background-color: #2fdab8;
+	width: 70%;
+	left: 40px;
+	bottom: 10px;
+	padding: 1px;
+}
+
+
+.info-product-price #cart2 a{
+	color: #fff;
+	padding: 1px;
+	font-size: 20px;
+}

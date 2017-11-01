@@ -7,8 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class disctrict extends Model
 {
 
-	protected $fillable = ['name', 'region_id'];
     public function region(){
-    	$this->belongsTo('App\region');
+    return	$this->belongsTo('App\region');
+    }
+
+     public function price(){
+    return	$this->hasMany(districtPrice::class,'disctrict_id');
+    }
+
+    public function order()
+    {
+    	return $this->hasMany(order::class);
     }
 }

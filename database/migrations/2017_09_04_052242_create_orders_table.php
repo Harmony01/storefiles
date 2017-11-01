@@ -26,6 +26,8 @@ class CreateOrdersTable extends Migration
             $table->integer('status');
             $table->float('total_price');
             $table->integer('user_id');
+            $table->integer('region_id')->unsigned();
+            $table->integer('disctrict_id')->unsigned();
             $table->timestamps();
         });
     }

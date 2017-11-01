@@ -50,13 +50,78 @@ $(document).ready(function(){
         }
     });
 //declared delivered--------------------------------------
-    $('#delivered').click(function(e){
-      var amount = $('#bal').text();
-      if (amount > 0) {
-        e.preventDefault();
-       alert('Delivery cannot be confirmed! Customer is owing, Delievery will only be confirmed when customer makes full payment. Enter Payment if customer has made full payment');
+//prevent sending district if region not selected---------
+$('#sendDis').click(function(e){
+    var reg = $('#reg').val();
+     var name = $('#name').val();
+      if(reg=='----select Region---'){
+         alert('Please select region');
+         e.preventDefault(); 
+        }else if(name==""){
+           alert('Please input district');
+         e.preventDefault(); 
+        }
+    });
+//order form validation============================================================
+//check and make sure only number is entered in those requiring numbers============
 
-      }
-    }); 
+$('#tel').on('keyup', function(){
+   
+  checkNumber();
+});
+
+$('#amt').on('keyup', function(){
+ 
+  checkNumber();
+});
+function checkNumber()
+{
+  var tel = $('#tel').val();
+  var amt = $('#amt').val(); 
+ if(isNaN(tel)){
+     $('#telCheck').text('Error!! Characters 0-9 only is accepted.');
+     $('#telCheck').addClass('alert');
+
+  }
+  
+  if(isNaN(amt)){
+     $('#amountCheck').text('Error!! Characters 0-9 only is accepted. live comma and the cedi sign. eg type GHS 30 as just 30');
+     $('#amountCheck').addClass('alert');
+
+  } 
+}
+//validate form sumbmition
+$('#submit').click(function(e){
+   var tel = $('#tel').val();
+   var amt = $('#amt').val(); 
+   var reg = $('#reg').val();
+   var dis = $('#dis').val();
+   var result = $('#result');
+   var feedBack = "";
+
+    if (isNaN(tel)) {
+         e.preventDefault();
+         feedBack ='<i class="fa fa-times"></i>'+ 'ERROR!! Unacepted character input for telephone number';
+         result.html(feedBack);
+         result.show().fadeIn(1000);
+     }else if (reg=="--please select--") {
+          e.preventDefault();
+          feedBack='<i class="fa fa-times"></i>'+"ERROR! Please select Region";
+          result.html(feedBack);
+          result.show().fadeIn(1000);
+     }else if (dis=="---Please Select---") {
+          e.preventDefault();
+          feedBack='<i class="fa fa-times"></i>'+"ERROR! Please select Your district";
+          result.html(feedBack);
+          result.show().fadeIn(1000);
+     }else if (isNaN(amt)) {
+         e.preventDefault();
+         feedBack ='<i class="fa fa-times"></i>'+ 'ERROR!! Unacepted character input for amount';
+         result.html(feedBack);
+         result.show().fadeIn(1000);
+       }
   });
+});
+
+
 

@@ -23,9 +23,9 @@
 									<div class="item-info-product ">
 										<h4><a href="/view/{{$ps->dash}}/{{$ps->category_id}}">{{$ps->name}}</a></h4>
 										<div class="info-product-price">
-											<span class="item_price">GHS {{ number_format($ps->net_price,2)}}</span>
-											<del>GHS {{ number_format($ps->price,2)}}</del><br>
-											<span id="cart"><a href="/cart/{{$ps->id}}/add"><i class="fa fa-cart-arrow-down"></i></a></span>
+											<span class="item_price" >GHS {{ number_format($ps->net_price,2)}}</span>
+											<del>GHS {{ number_format($ps->price,2)}}</del><br><br>
+											<div id="cart2"><a href="/cart/{{$ps->id}}/add"><i class="fa fa-cart-arrow-down"> buy now</i></a></div>
 										</div>
 													
 									</div>

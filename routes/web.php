@@ -53,6 +53,8 @@ Route::post('/new/register', 'order\orderRegister@register')->name('order.regist
 route::get('user/orders', 'Auth\userController@index')->name('user.orders');
 route::get('orders/view/{id}', 'Auth\userController@show')->name('view.order');
 //admin order
+//structure
+Route::get('structure', 'admin\structure@index')->name('structure');
 route::get('orders/{type}', 'admin\adminOrderController@Rec')->name('new.orders');
 Route::get('order/{orderId}/{type}', 'admin\adminOrderController@view');
 Route::get('send/{orderId}/{status}', 'admin\adminOrderController@status');
@@ -60,6 +62,11 @@ Route::post('send/payment', 'admin\adminOrderController@pay');
 //location
 Route::get('/locations', 'admin\adminOrderController@location')->name('loc');
 route::post('add/location', 'admin\adminOrderController@add')->name('add.loc');
+route::post('add/price', 'admin\adminOrderController@addP')->name('add.price');
+route::post('fetchdis/{id}', 'admin\adminOrderController@fetchdis');
+//fetch dis
+route::get('/fetch', 'orderController@fetchDis')->name('fetch');
+route::get('/price', 'orderController@fetchPrice');
 //pages
 route::get('/{name}/{id}', 'pagesController@index');
 

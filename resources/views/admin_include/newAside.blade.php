@@ -85,6 +85,11 @@
             <i class="fa fa-home"></i> <span>Locations</span>
           </a>
         </li>
+        <li>
+          <a href="{{Route('structure')}}">
+            <i class="fa fa-cogs"></i> <span>Structure</span>
+          </a>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-cubes"></i> <span>Products</span>

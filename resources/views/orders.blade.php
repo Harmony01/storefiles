@@ -51,7 +51,7 @@ Order and Payment
               @forelse(Auth::user()->order as $orders)
               <tr>
                 <td>{{$orders->orderId}}</td>
-                <td>GHS{{$orders->total_price}}</td>
+                <td>GHS<?php echo number_format(($orders->total_price+$orders->Dprice),2)  ?></td>
                 <td>{{$orders->created_at}}</td>
                 <td>
                    @if($orders->status=='0')
@@ -59,7 +59,15 @@ Order and Payment
                   @elseif($orders->status=='1')
                   <span class="label label-primary">received</span>
                   @elseif($orders->status=='2')
-                   <span class="label label-info">delivery initiated</span>
+                   <span class="label label-info">delivery initiated</span><br>
+                   <?php 
+                      $b = $orders->total_price - $orders->amount;
+                      if ($b>0) {
+                        echo '<span style="color:red;"> outstanding Bal: GHS '.number_format($b,2).'</span>';
+                      }else{
+                        echo '<span> outstanding Bal: GHS '.number_format($b,2).'</span>';
+                      }
+                    ?>
                    @elseif($orders->status=='3')
                     <span class="label label-success">Delivered, Payed</span>
                    @elseif($orders->status=='4')
